@@ -30,13 +30,13 @@ in order to prevent running scheduled tasks if those tasks haven't been finished
 by runInBackground().
 
 
-B) What is the difference between the Context and Cache Facades? Provide examples to illustrate your explanation.
+### B) What is the difference between the Context and Cache Facades? Provide examples to illustrate your explanation.
 
 Context is a way to capture and share some information in our application. It's an efficient way for logging handling. However, Generally, Cache Facade is an interface between 
 Application and Cache Layer for communication. In fact, we can change and adjust the Cache driver in the cache facade to using memcache or Redis. For instance, We can take advantage of cache in 
 saving temporary data to improve our performance. 
 
-C) What's the difference between $query->update(), $model->update(), and $model->updateQuietly() in Laravel, and when would you use each?
+### C) What's the difference between $query->update(), $model->update(), and $model->updateQuietly() in Laravel, and when would you use each?
 
 When we run `$query->update()` we just run a simple update like an update statement in SQL code. It means we run the query without orm some events that eloquent would attach.
 For instance, Eloquent can update updated_at in our table automatically. With query builder, we don't have these features. So It has better performance rather than eloquent.

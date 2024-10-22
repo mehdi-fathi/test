@@ -20,15 +20,7 @@ class OrderController extends Controller
 
         $orderData = $this->serializeOrderData($orders);
 
-        $orderPaginationData = [
-            'current_page' => $orders->currentPage(),
-            'per_page' => $orders->perPage(),
-            'total' => $orders->total(),
-            'last_page' => $orders->lastPage(),
-            'from' => $orders->firstItem(),
-            'to' => $orders->lastItem(),
-            'data' => $orderData
-        ];
+        $orderPaginationData = $this->getPaginationData($orders, $orderData);
 
         return view('orders.index', ['orders' => $orderPaginationData]);
     }
@@ -83,6 +75,25 @@ class OrderController extends Controller
             ];
         }
         return $orderData;
+    }
+
+    /**
+     * @param \Illuminate\Contracts\Pagination\LengthAwarePaginator $orders
+     * @param array $orderData
+     * @return array
+     */
+    private function getPaginationData(\Illuminate\Contracts\Pagination\LengthAwarePaginator $orders, array $orderData): array
+    {
+        $orderPaginationData = [
+            'current_page' => $orders->currentPage(),
+            'per_page' => $orders->perPage(),
+            'total' => $orders->total(),
+            'last_page' => $orders->lastPage(),
+            'from' => $orders->firstItem(),
+            'to' => $orders->lastItem(),
+            'data' => $orderData
+        ];
+        return $orderPaginationData;
     }
 }
 

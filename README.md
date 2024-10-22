@@ -25,6 +25,8 @@ calculating the total amount. In addition, we can have the same logic for Api an
 
 ## Test 4
 
+### A) Explain this code:
+
 Schedule is a feature for running something regularly like cronjob with better and more advanced management in the application. This code runs a specific command with withoutOverlapping()
 in order to prevent running scheduled tasks if those tasks haven't been finished yet. Laravel would run this command once in hour in just one server. And we run simultaneously with other tasks 
 by runInBackground().
